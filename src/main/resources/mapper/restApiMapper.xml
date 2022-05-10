@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.taehui.restapi.mapper.RestApiMapper">  
+
+	
+	<sql id="sortOption">
+		<if test="colId != null and colId != '' and sort != 'null' and sort != ''">
+			ORDER BY
+			<if test="colId == 'LINE_ID'">
+				LINE_ID 
+			</if> 
+			<if test="colId == 'STATION_NUM'">
+				STATION_NUM
+			</if>
+			<if test="colId == 'STATION_ID'">
+				STATION_ID
+			</if>
+			
+			<if test="sort =='asc'"> 
+				ASC
+			</if>
+			<if test="sort =='desc'">
+				DESC
+			</if>
+		</if>
+	</sql>
+	 
+	<!-- 역사 정보 목록 -->
+	<select id="selectStation" parameterType="java.util.HashMap"
+		resultType="java.util.HashMap">    
+		/* 역사정보 목록 */
+		SELECT 
+				STATION_TYPE, 
+				STATION_ID, 
+				STATION_NAME, 
+				STATION_DESC, 
+				LINE_ID,  
+				STATION_NUM
+		FROM NMS.TB_CO_STATION
+		<include refid="sortOption"></include> 
+		LIMIT  #{fistRowDataNum}, #{pageSize} 
+	</select>
+	<!-- 역사 정보 목록 -->
+	<select id="selectStationCount" parameterType="java.util.HashMap"
+		resultType="int"> 
+		/* 역사정보 목록 개수 */   
+		SELECT 
+				COUNT(*)
+		FROM NMS.TB_CO_STATION
+		<include refid="sortOption"></include>
+	</select>
+</mapper>
