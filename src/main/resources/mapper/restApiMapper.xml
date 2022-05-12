@@ -39,7 +39,9 @@
 				STATION_NUM
 		FROM NMS.TB_CO_STATION
 		<include refid="sortOption"></include> 
-		LIMIT  #{fistRowDataNum}, #{pageSize} 
+		<if test="firstRowDataNum != null and pageSize != null">
+			LIMIT  #{firstRowDataNum}, #{pageSize} 
+		</if>  
 	</select>
 	<!-- 역사 정보 목록 -->
 	<select id="selectStationCount" parameterType="java.util.HashMap"

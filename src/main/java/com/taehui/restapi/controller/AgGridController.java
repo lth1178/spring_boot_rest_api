@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.taehui.restapi.dto.BaordDTO;
+import com.taehui.restapi.dto.SearchDTO;
 import com.taehui.restapi.service.RestApiService;
 
 //cors정책 허용을 위해 추가
-@CrossOrigin(origins = "http://127.0.0.1:3000") // 추가 
+@CrossOrigin(origins = {"http://127.0.0.1:3000", "http://localhost:3000"}) // 추가 
 @RestController 
 public class AgGridController {
 	
@@ -56,20 +58,10 @@ public class AgGridController {
 	}
 	//axios 데이터 가지고 오기
 	@PostMapping("/api/test/post")
-	public Map<String, Object> post(@RequestBody Map<String, Object> params) {
-		HashMap<String, Object> map = new HashMap<>();
-		params.get("searchOption.searchKind");
-		map.put("searchKind", ((HashMap) params.get("searchOption")).get("searchKind"));
-		map.put("fistRowDataNum",((HashMap) params.get("searchOption")).get("fistRowDataNum"));
-		map.put("colId",((HashMap) params.get("sortOption")).get("colId"));
-		map.put("sort", ((HashMap) params.get("sortOption")).get("sort"));
-		map.put("pageSize", ((HashMap) params.get("paginationOption")).get("pageSize"));
-		map.put("currentPage",((HashMap) params.get("paginationOption")).get("currentPage"));
-		
-		
+	public Map<String, Object> post(@RequestBody HashMap<String, Object> request) {
 		HashMap<String, Object> resultMap = new HashMap<>();
-		List<Map<String, Object>> list = restApiService.restApiList(map);
-		int totalRowDataCount = restApiService.restApiListCount(map);
+		List<Map<String, Object>> list = restApiService.restApiList(request);
+		int totalRowDataCount = restApiService.restApiListCount(request);
 		resultMap.put("rowData", list);
 		resultMap.put("totalRowDataCount", totalRowDataCount);
 		return resultMap;
