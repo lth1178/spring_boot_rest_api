@@ -11,15 +11,14 @@ import com.taehui.restapi.mapper.RestApiMapper;
 
 @Service
 public class RestApiService{
-	
 	@Autowired
     RestApiMapper restApiMapper;
 	
-	public List<Map<String, Object>> restApiList(HashMap<String, Object> map) {
+	public List<Map<String, Object>> restApiList(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return restApiMapper.selectStation(map);
 	}
-	public int restApiListCount(HashMap<String, Object> map) {
+	public int restApiListCount(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return restApiMapper.selectStationCount(map);
 	 }

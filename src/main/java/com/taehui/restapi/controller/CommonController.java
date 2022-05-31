@@ -47,6 +47,7 @@ public class CommonController {
 		//zip 변환 후 파일 다운로드
 	@RequestMapping(value="zipFileDownload.do")
 	public void zipFileDownload(HttpServletResponse response) throws IOException {
+		//다운로드 하는 게시물의 고유 코드를 가지고 해당 코드를 가지지고 있는 모든 파일을 파일 리스트에 추가 후 저장
 	    List<File> fileList = new LinkedList();
 	    
 	    fileList.add(new File("C:/Users/lth11/Desktop/이태희2021.06.28~/KALIS/fileTest/test1.txt"));

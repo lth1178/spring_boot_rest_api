@@ -47,9 +47,9 @@ public class AgGridController {
 	
 	@GetMapping("/api/test")
 	public Map<String, Object> test() {
-		HashMap<String, Object> map = new HashMap<>();
+		Map<String, Object> map = new HashMap<>();
 		
-		HashMap<String, Object> resultMap = new HashMap<>();
+		Map<String, Object> resultMap = new HashMap<>();
 		List<Map<String, Object>> list = restApiService.restApiList(map);
 		int totalRowDataCount = restApiService.restApiListCount(map);
 		resultMap.put("rowData", list);
@@ -58,8 +58,8 @@ public class AgGridController {
 	}
 	//axios 데이터 가지고 오기
 	@PostMapping("/api/test/post")
-	public Map<String, Object> post(@RequestBody HashMap<String, Object> request) {
-		HashMap<String, Object> resultMap = new HashMap<>();
+	public Map<String, Object> post(@RequestBody Map<String, Object> request) {
+		Map<String, Object> resultMap = new HashMap<>();
 		List<Map<String, Object>> list = restApiService.restApiList(request);
 		int totalRowDataCount = restApiService.restApiListCount(request);
 		resultMap.put("rowData", list);
@@ -68,7 +68,7 @@ public class AgGridController {
 	}
 	@GetMapping("/api/test/count")
 	public Map<String, Object> count() {
-		HashMap<String, Object> map = new HashMap<>();
+		Map<String, Object> map = new HashMap<>();
 		int totalRowDataCount = restApiService.restApiListCount(map);
 		map.put("totalRowDataCount", totalRowDataCount);
 		return map;
@@ -76,12 +76,12 @@ public class AgGridController {
 	
 	
 	@GetMapping("/api/station")
-	public List<HashMap<String, Object>> getSelectStation() {
-		List<HashMap<String, Object>> list = new ArrayList<>();
+	public List<Map<String, Object>> getSelectStation() {
+		List<Map<String, Object>> list = new ArrayList<>();
 		
 		
 		for(int i=0; i<124; i++) {
-			HashMap<String, Object> map = new HashMap<String, Object>();
+			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("TITLE", "제목_" + i) ;
 			map.put("CONTECTS", "내용_" + i);
 			map.put("WRITER", "글쓴이_" + i);

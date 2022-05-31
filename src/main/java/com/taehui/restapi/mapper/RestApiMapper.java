@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
 @Repository 
 public interface RestApiMapper { 
 	/* rest */
-	public List<Map<String, Object>> selectStation(HashMap<String, Object> map); //
-	public int selectStationCount(HashMap<String, Object> map); //
+	public List<Map<String, Object>> selectStation(Map<String, Object> map); //
+	public int selectStationCount(Map<String, Object> map); //
 }
