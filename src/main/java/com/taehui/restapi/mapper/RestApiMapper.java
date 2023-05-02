@@ -8,10 +8,13 @@ import org.apache.ibatis.annotations.Mapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Repository;
 
+import com.taehui.restapi.dto.BoardDTO;
+
 @Mapper
 @Repository 
 public interface RestApiMapper { 
 	/* rest */
 	public List<Map<String, Object>> selectStation(Map<String, Object> map); //
 	public int selectStationCount(Map<String, Object> map); //
+	public List<BoardDTO> selectStationBoardDto(BoardDTO boardDto); //
 }

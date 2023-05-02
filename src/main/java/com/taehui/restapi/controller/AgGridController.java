@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.taehui.restapi.dto.BaordDTO;
+import com.taehui.restapi.dto.BoardDTO;
 import com.taehui.restapi.dto.SearchDTO;
 import com.taehui.restapi.service.RestApiService;
 
@@ -90,5 +90,12 @@ public class AgGridController {
 		return list;
 	}
 	
+	@PostMapping("/api/test/post/board")
+	public Map<String, Object> postBoard(@RequestBody BoardDTO request) {
+		Map<String, Object> resultMap = new HashMap<>();
+		List<BoardDTO> list = restApiService.restApiListBoardDto(request);
+		resultMap.put("rowData", list);
+		return resultMap;
+	}
 	
 }

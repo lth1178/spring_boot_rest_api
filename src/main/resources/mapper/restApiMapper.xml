@@ -73,4 +73,22 @@
 		<include refid="sortOption"></include>
 		<include refid="searchOption"></include> 
 	</select>
+	
+	<!-- 역사 정보 목록 -->
+	<select id="selectStationBoardDto" parameterType="com.taehui.restapi.dto.BoardDTO"
+		resultType="com.taehui.restapi.dto.BoardDTO">    
+		/* 역사정보 목록 */
+		SELECT #{firstRowDataNum} AS FIRST_ROW_DATA_NUM,
+				STATION_TYPE, 
+				STATION_ID, 
+				STATION_NAME, 
+				STATION_DESC, 
+				LINE_ID,  
+				STATION_NUM
+		FROM NMS.TB_CO_STATION
+		WHERE 1=1
+		<include refid="sortOption"></include> 
+		<include refid="searchOption"></include> 
+		LIMIT #{firstRowDataNum}, #{pageSize} 
+	</select>
 </mapper>

@@ -3,7 +3,7 @@ package com.taehui.restapi.dto;
 public class SearchDTO {
 	private String searchKind;
 	private String searchWord;
-	private int firstRowDatNum;
+	private int firstRowDataNum;
 	private String colId;
 	private String sort;
 	private int pageSize;
@@ -13,17 +13,17 @@ public class SearchDTO {
 	public void setSearchKind(String searchKind) {
 		this.searchKind = searchKind;
 	}
-	public String getSearchWork() {
+	public String getSearchWord() {
 		return searchWord;
 	}
-	public void setSearchWork(String searchWork) {
+	public void setSearchWord(String searchWork) {
 		this.searchWord = searchWork;
 	}
 	public int getFirstRowDatNum() {
-		return firstRowDatNum;
+		return firstRowDataNum;
 	}
-	public void setFirstRowDatNum(int firstRowDatNum) {
-		this.firstRowDatNum = firstRowDatNum;
+	public void setFirstRowDatNum(int firstRowDataNum) {
+		this.firstRowDataNum = firstRowDataNum;
 	}
 	public String getColId() {
 		return colId;

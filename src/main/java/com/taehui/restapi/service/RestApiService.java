@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.taehui.restapi.dto.BoardDTO;
 import com.taehui.restapi.mapper.RestApiMapper;
 
 @Service
@@ -22,4 +23,10 @@ public class RestApiService{
 		// TODO Auto-generated method stub
 		return restApiMapper.selectStationCount(map);
 	 }
+	
+	public List<BoardDTO> restApiListBoardDto(BoardDTO boardDto) {
+		// TODO Auto-generated method stub
+		return restApiMapper.selectStationBoardDto(boardDto);
+	}
+	
 }
